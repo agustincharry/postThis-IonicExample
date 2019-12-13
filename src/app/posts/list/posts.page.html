@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Posts
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <div *ngFor="let post of posts">
+            <ion-item routerLink="/posts/{{post.id}}" >
+                <ion-label>{{post.title}}</ion-label>
+            </ion-item>
+        </div>
+    </ion-list>
+
+</ion-content>

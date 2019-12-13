@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Post
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card *ngIf="post">
+        <ion-item>
+            <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+            <ion-label>{{post.title}}</ion-label>
+        </ion-item>
+
+        <ion-card-content>{{post.body}}</ion-card-content>
+    </ion-card>
+
+</ion-content>
