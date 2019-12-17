@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../posts.service';
+import { PostsService } from '../services/posts.service';
 import { ActivatedRoute } from '@angular/router';
+import { CommentsService } from '../services/comments.service';
 
 @Component({
   selector: 'app-details',
@@ -10,19 +11,27 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailsPage implements OnInit {
 
   private post: any;
+  private comments: Array<any>;
 
-  constructor(private postsServce: PostsService, private route: ActivatedRoute) { }
+  constructor(private postsServce: PostsService, private commentsService: CommentsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(paramsId => {
       const id = paramsId.id;
       this.getPost(id);
+      this.getComments(id);
     });
   }
 
-  getPost(id: string) {
-    this.postsServce.getPost(id).subscribe(data => {
+  getPost(postId: string) {
+    this.postsServce.getPost(postId).subscribe(data => {
       this.post = data;
+    });
+  }
+
+  getComments(postId: string) {
+    this.commentsService.getComments(postId).subscribe(data => {
+      this.comments = data;
     });
   }
 
